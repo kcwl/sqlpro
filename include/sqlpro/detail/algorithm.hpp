@@ -5,8 +5,8 @@
 #include <mysql.h>
 #include <algorithm>
 #include "type_traits.hpp"
-#include "reflect/include/reflect.hpp"
 #include <codecvt>
+#include <sqlpro/detail/reflect.hpp>
 
 #pragma warning(disable:4996)
 namespace sqlpro

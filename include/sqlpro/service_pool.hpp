@@ -4,6 +4,7 @@
 #include <thread>
 #include <algorithm>
 #include <future>
+#include <format>
 #include "task_queue.hpp"
 #include "detail/service/mysql_connect.hpp"
 
@@ -87,13 +88,15 @@ namespace sqlpro
 		}
 
 		template<typename F, typename... Args>
-		auto async_execute(F&& f, Args&&... args)
+		auto async_execute(F f, Args&&... args) -> std::future<bool>
 		{
-			return async_execute(std::format(std::forward<F>(f), std::forward<Args>(args)...));
+			//return async_execute_sql(std::format(f, std::forward<Args>(args)...));
+			return async_execute_sql(f);
 		}
 
-		auto async_execute(const std::string& sql)
+		std::future<bool> async_execute_sql(const std::string& sql)
 		{
+			auto str = std::format(sql, 1);
 			auto conn_ptr = get_service();
 
 			if (conn_ptr == nullptr)
