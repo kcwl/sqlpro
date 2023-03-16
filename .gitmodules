@@ -1,3 +1,0 @@
-[submodule "include/sqlpro/detail/reflect"]
-	path = include/sqlpro/detail/reflect
-	url = https://github.com/kcwl/reflect.git
