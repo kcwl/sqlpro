@@ -87,16 +87,8 @@ namespace sqlpro
 			return *iter;
 		}
 
-		template<typename F, typename... Args>
-		auto async_execute(F f, Args&&... args) -> std::future<bool>
+		std::future<bool> async_execute(const std::string& sql)
 		{
-			//return async_execute_sql(std::format(f, std::forward<Args>(args)...));
-			return async_execute_sql(f);
-		}
-
-		std::future<bool> async_execute_sql(const std::string& sql)
-		{
-			auto str = std::format(sql, 1);
 			auto conn_ptr = get_service();
 
 			if (conn_ptr == nullptr)
