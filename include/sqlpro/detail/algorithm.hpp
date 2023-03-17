@@ -100,10 +100,12 @@ namespace sqlpro
 		template<typename T>
 		auto cast(const char* val)
 		{
+			using type = std::remove_cvref_t<T>;
+
 			std::stringstream ss;
 			ss << val;
 
-			T t;
+			type t{};
 			ss >> t;
 
 			return t;
@@ -112,7 +114,7 @@ namespace sqlpro
 		template<typename T, std::size_t... I>
 		auto to_struct_impl(const MYSQL_ROW& row, std::index_sequence<I...>)
 		{
-			return T{ cast<decltype(reflect::get<I>(T{})) > (row[I])... };
+			return T{ cast<decltype(reflect::get<I>(std::declval<T>())) > (row[I])... };
 		}
 
 		template<typename T>

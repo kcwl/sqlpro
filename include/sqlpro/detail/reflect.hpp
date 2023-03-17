@@ -9,7 +9,7 @@ namespace sqlpro
 		constexpr auto rf_size_v = boost::pfr::tuple_size_v<_Ty>;
 
 		template<std::size_t I, typename _Ty>
-		constexpr decltype(auto) get(_Ty& val)
+		constexpr decltype(auto) get(const _Ty& val)
 		{
 			return boost::pfr::get<I, _Ty>(val);
 		}
