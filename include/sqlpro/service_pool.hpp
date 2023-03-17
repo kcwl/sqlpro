@@ -6,13 +6,16 @@
 #include <future>
 #include <format>
 #include "task_queue.hpp"
-#include "detail/service/mysql_connect.hpp"
+#include <sqlpro/sql_transaction.hpp>
+#include <sqlpro/error_code.hpp>
+
 
 namespace sqlpro
 {
+	template<typename _Service>
 	class service_pool
 	{
-		using service_ptr = std::shared_ptr<mysql_connect>;
+		using service_ptr = std::shared_ptr<_Service>;
 
 		inline constexpr static std::size_t pool_size = 2 * 3;
 
@@ -25,7 +28,7 @@ namespace sqlpro
 		{
 			for (std::size_t i = 0; i < size; i++)
 			{
-				service_pool_.push_back(std::make_shared<mysql_connect>(std::forward<Args>(args)...));
+				service_pool_.push_back(std::make_shared<_Service>(std::forward<Args>(args)...));
 
 				thread_pool_.push_back(std::make_shared<std::thread>([&]()
 																	 {
@@ -47,11 +50,6 @@ namespace sqlpro
 		~service_pool()
 		{
 			stop();
-		}
-
-		void run()
-		{
-			mysql_init(nullptr);
 		}
 
 		void stop()
