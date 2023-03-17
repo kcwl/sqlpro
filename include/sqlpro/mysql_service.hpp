@@ -2,9 +2,9 @@
 #include <mysql.h>
 #include <string>
 #include <vector>
-#include "../algorithm.hpp"
-#include "../../error_code.hpp"
-#include "../../sql_transaction.hpp"
+#include <sqlpro/algorithm.hpp>
+#include <sqlpro/error_code.hpp>
+#include <sqlpro/sql_transaction.hpp>
 
 namespace sqlpro
 {

@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <future>
 #include <format>
-#include "task_queue.hpp"
+#include <sqlpro/task_queue.hpp>
 #include <sqlpro/sql_transaction.hpp>
 #include <sqlpro/error_code.hpp>
 

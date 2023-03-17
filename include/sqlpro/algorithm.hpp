@@ -4,9 +4,9 @@
 #include <string_view>
 #include <mysql.h>
 #include <algorithm>
-#include "type_traits.hpp"
+#include <sqlpro/type_traits.hpp>
 #include <codecvt>
-#include <sqlpro/detail/reflect.hpp>
+#include <sqlpro/reflect.hpp>
 
 #pragma warning(disable:4996)
 namespace sqlpro

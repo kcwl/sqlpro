@@ -3,8 +3,8 @@
 #include <typeinfo>
 #include <functional>
 #include "sql_type.hpp"
-#include "detail/type_traits.hpp"
-#include "detail/algorithm.hpp"
+#include <sqlpro/type_traits.hpp>
+#include <sqlpro/algorithm.hpp>
 
 #pragma warning(disable:4100)
 

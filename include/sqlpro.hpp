@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "sqlpro/service_pool.hpp"
-#include <sqlpro/detail/service/mysql_connect.hpp>
+#include <sqlpro/mysql_service.hpp>
 
 namespace sqlpro
 {
